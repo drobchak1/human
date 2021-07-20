@@ -1,4 +1,14 @@
-class Human:
+from dataclasses import dataclass
+
+
+class Meta(type):
+    def __new__(cls, name, bases, dct):
+        x = super().__new__(cls, name, bases, dct)
+        x.attr = 100
+        return x
+
+
+class Human(metaclass=Meta):
     def __init__(
         self,
         name,
@@ -83,7 +93,7 @@ class Child(Human):
 
     def life_expectancy(self):
         """
-        This function estimates human's life expectency based on provided health stats
+        This function estimates human's life expectancy based on provided health stats
         """
         print("Warning! For a child this estimates are not presize")
         return super().life_expectancy()
@@ -92,15 +102,15 @@ class Child(Human):
         return "This class should only represent humans, who are children"
 
 
-# illia = Human("Illia", 26, 82, False, True, 0, False)
-# stepan = Child("Stepan", 10, 35, False, False, 0, False)
-# print(illia.life_expectancy())
-# print(illia.expected_years_left())
-# print(illia.pfizer_eligibility())
-# print(Human.__doc__())
-# print(illia())
-# print(illia.get_married())
-# print(stepan.life_expectancy())
-# print(illia.get_salary())
-# illia.set_salary(500)
-# print(illia.get_salary())
+@dataclass
+class Vaccination_Appoinment:
+    clinic: str
+    adress: str
+    person: Human
+
+    def permit(self):
+        if self.person.age >= 12:
+            return "Appointment created"
+        else:
+            return "You can`t get a shot due to your age. Come back when you are old enough!"
+
