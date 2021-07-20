@@ -23,10 +23,10 @@ class Human:
         return f"I am human {self.name}, I am {self.age} years old"
 
     def __doc__():
-        return 'This class can represent any human'
+        return "This class can represent any human"
 
     def __call__(self):
-        return f'{self.name} is here, ready to help you'
+        return f"{self.name} is here, ready to help you"
 
     def get_salary(self):
         return self._salary
@@ -40,11 +40,12 @@ class Human:
         def wrap(self):
             func(self)
             print(f"But {self.name} can always divorce!")
+
         return wrap
 
     @additional_message
     def get_married(self):
-        print(f'{self.name} formed a family with another human')
+        print(f"{self.name} formed a family with another human")
 
     def pfizer_eligibility(self):
         """Check`s if human old enough to receive Pfizer shot"""
@@ -74,7 +75,6 @@ class Human:
 
 
 class Child(Human):
-
     def __str__(self):
         return f"I am child {self.name}, I am {self.age} years old"
 
@@ -85,11 +85,11 @@ class Child(Human):
         """
         This function estimates human's life expectency based on provided health stats
         """
-        print('Warning! For a child this estimates are not presize')
+        print("Warning! For a child this estimates are not presize")
         return super().life_expectancy()
 
     def __doc__():
-        return 'This class should only represent humans, who are children'
+        return "This class should only represent humans, who are children"
 
 
 # illia = Human("Illia", 26, 82, False, True, 0, False)
@@ -104,6 +104,3 @@ class Child(Human):
 # print(illia.get_salary())
 # illia.set_salary(500)
 # print(illia.get_salary())
-
-
-
